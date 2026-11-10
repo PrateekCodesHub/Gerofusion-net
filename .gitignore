@@ -10,6 +10,8 @@ env/
 ENV/
 env.bak/
 venv.bak/
+backend/venv310/
+backend/backend/
 
 # Python cache & build
 __pycache__/
@@ -45,7 +47,7 @@ frontend/dist/
 frontend/build/
 .npm
 
-# Large Datasets & Raw Media (Prevent GitHub 100MB limit)
+# Large Datasets & Media
 dataset/
 *.zip
 *.tar.gz
@@ -57,28 +59,35 @@ dataset/
 *.wav
 *.mp3
 
-# Keep placeholder in dataset/ directory
-!dataset/.gitkeep
+# Ignore Presentation, Slides & Canva artifacts
+*.pptx
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.html
+*.txt
+output/
+"slide ppt content"/
+"terminal commands"/
+"final output images"/
+
+# Ignore Batch files
+*.bat
+
+# Ignore root generator scripts
+generate_*.py
+create_*.py
+merge_*.py
+regenerate_*.py
+add_saved_*.py
+build_project_review_notes.py
 
 # Heavy Model Checkpoints (> 50MB)
 trained_models/*.h5
 trained_models/*.pt
 trained_models/*.pth
 trained_models/*.ckpt
-trained_models/*.keras
-!trained_models/*.json
-
-# Heavy PPTX presentations and screenshots
-*.pptx
-*.png
-*.jpg
-*.jpeg
-*.svg
-output/
-slide ppt content/
-terminal commands/
-final output images/
-datset chat.txt
 
 # IDE, Editor & OS artifacts
 .vscode/
