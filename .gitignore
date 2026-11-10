@@ -61,14 +61,24 @@ dataset/
 !dataset/.gitkeep
 
 # Heavy Model Checkpoints (> 50MB)
-# Note: Lightweight models like GeriatricNet_Standard.keras (~9MB) can be tracked,
-# but ignore large checkpoints:
 trained_models/*.h5
 trained_models/*.pt
 trained_models/*.pth
 trained_models/*.ckpt
+trained_models/*.keras
 !trained_models/*.json
-!trained_models/GeriatricNet_Standard.keras
+
+# Heavy PPTX presentations and screenshots
+*.pptx
+*.png
+*.jpg
+*.jpeg
+*.svg
+output/
+slide ppt content/
+terminal commands/
+final output images/
+datset chat.txt
 
 # IDE, Editor & OS artifacts
 .vscode/
