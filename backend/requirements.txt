@@ -1,0 +1,40 @@
+# ─────────────────────────────────────────────────────────────────
+# Geriatric Syndrome NeuroVision v3 — Backend Dependencies
+# Python 3.10+  |  GPU: NVIDIA GTX 1650 (4 GB VRAM)
+# Install: pip install -r requirements.txt
+# ─────────────────────────────────────────────────────────────────
+
+# ── Deep Learning ─────────────────────────────────────────────────
+tensorflow==2.15.0
+tensorflow-io-gcs-filesystem==0.31.0
+
+# ── API Framework ────────────────────────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9
+pydantic==2.7.1
+
+# ── Data Science ──────────────────────────────────────────────────
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.4.2
+scipy==1.13.0
+matplotlib==3.8.4
+seaborn==0.13.2
+
+# ── Image Processing ─────────────────────────────────────────────
+Pillow==10.3.0
+opencv-python-headless==4.9.0.80
+
+# ── Audio Processing ──────────────────────────────────────────────
+librosa==0.10.2
+soundfile==0.12.1
+
+# ── Kaggle Dataset Download ───────────────────────────────────────
+kaggle==1.6.12
+
+# ── Utilities ────────────────────────────────────────────────────
+tqdm==4.66.4
+python-dotenv==1.0.1
+requests==2.32.2
+aiofiles==23.2.1

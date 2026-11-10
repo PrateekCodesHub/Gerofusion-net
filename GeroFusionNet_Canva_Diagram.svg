@@ -1,0 +1,378 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <!-- Filter for clean card elevation shadow -->
+    <filter id="cardShadow" x="-6%" y="-6%" width="112%" height="116%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.06"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.04"/>
+    </filter>
+    
+    <!-- Arrowhead markers -->
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#0284c7" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#d97706" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#7c3aed" />
+    </marker>
+    <marker id="arrow-slate" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-rose" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#e11d48" />
+    </marker>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap');
+      text { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+      .header-title { font-size: 32px; font-weight: 800; fill: #0f172a; letter-spacing: -0.5px; }
+      .header-sub { font-size: 16px; font-weight: 500; fill: #64748b; }
+      .col-header { font-size: 14px; font-weight: 700; fill: #64748b; letter-spacing: 1.2px; text-transform: uppercase; }
+      .card-title { font-size: 18px; font-weight: 700; fill: #0f172a; }
+      .card-desc { font-size: 13.5px; font-weight: 500; fill: #475569; }
+      .card-badge { font-size: 13px; font-weight: 700; }
+      .badge-bg { rx: 6px; }
+      .fusion-title { font-size: 20px; font-weight: 800; fill: #1e1b4b; }
+      .fusion-stat-val { font-size: 22px; font-weight: 800; }
+      .fusion-stat-lbl { font-size: 13px; font-weight: 600; fill: #475569; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="#f8fafc" />
+
+  <!-- Top Decorative Header Bar -->
+  <rect x="0" y="0" width="1920" height="6" fill="#4338ca" />
+
+  <!-- Title & Subtitle Banner -->
+  <g transform="translate(80, 55)">
+    <rect x="0" y="-8" width="48" height="48" rx="12" fill="#eff6ff" />
+    <path d="M12 16 L24 28 L36 16 M24 28 L24 8" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" transform="translate(0, -4)"/>
+    <text x="65" y="16" class="header-title">GeroFusion Net Architecture</text>
+    <text x="65" y="42" class="header-sub">Multimodal Deep Feature-Level Fusion (Image • Clinical • Audio • Video) &amp; Softmax Classification</text>
+  </g>
+
+  <!-- Column Stage Labels -->
+  <g transform="translate(0, 140)">
+    <text x="80" y="0" class="col-header">Stage 1: Multimodal Inputs</text>
+    <text x="430" y="0" class="col-header">Stage 2: Feature Extraction</text>
+    <text x="830" y="0" class="col-header">Stage 3: Feature-Level Fusion Engine</text>
+    <text x="1420" y="0" class="col-header">Stage 4: Softmax Classification</text>
+  </g>
+
+    <!-- BRANCH 1: IMAGE -->
+    <g id="branch-image">
+      <!-- Input Card -->
+      <g filter="url(#cardShadow)">
+        <rect x="80" y="180" width="290" height="170" rx="14" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+        <rect x="80" y="180" width="8" height="170" rx="4" fill="#0284c7"/>
+      </g>
+      <rect x="105" y="200" width="34" height="34" rx="8" fill="#e0f2fe"/>
+      <!-- Icon Image -->
+      <path d="M112 224 L121 214 L127 220 L131 216 L137 224 Z" fill="#0284c7"/>
+      <circle cx="116" cy="209" r="3" fill="#0284c7"/>
+      <text x="150" y="222" class="card-title">Patient Image</text>
+      <text x="105" y="262" class="card-desc">• 224 × 224 × 3 RGB Tensor</text>
+      <text x="105" y="286" class="card-desc">• Postural Stability &amp; Facial Cues</text>
+      <rect x="105" y="304" width="110" height="26" rx="6" fill="#e0f2fe"/>
+      <text x="160" y="322" text-anchor="middle" class="card-badge" fill="#0284c7">RGB Visual</text>
+
+      <!-- Arrow Input -> Backbone -->
+      <line x1="370" y1="265" x2="425" y2="265" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+
+      <!-- Backbone Card -->
+      <g filter="url(#cardShadow)">
+        <rect x="430" y="180" width="330" height="170" rx="14" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+        <rect x="430" y="180" width="8" height="170" rx="4" fill="#0284c7"/>
+      </g>
+      <text x="455" y="220" class="card-title">Visual CNN Backbone</text>
+      <text x="455" y="244" class="card-desc">GeriatricNet / Fine-Tuned ResNet50</text>
+      <text x="455" y="268" class="card-desc">• Depthwise Conv + Global AvgPool</text>
+      <text x="455" y="292" class="card-desc">• Spatial Feature Bottleneck</text>
+      <!-- Dimension Pill -->
+      <rect x="455" y="304" width="165" height="28" rx="6" fill="#0284c7"/>
+      <text x="537" y="323" text-anchor="middle" class="card-badge" fill="#ffffff">Feature Dim: 128-d</text>
+    </g>
+    
+    <!-- BRANCH 2: CLINICAL -->
+    <g id="branch-clinical">
+      <!-- Input Card -->
+      <g filter="url(#cardShadow)">
+        <rect x="80" y="395" width="290" height="170" rx="14" fill="#ffffff" stroke="#a7f3d0" stroke-width="2"/>
+        <rect x="80" y="395" width="8" height="170" rx="4" fill="#059669"/>
+      </g>
+      <rect x="105" y="415" width="34" height="34" rx="8" fill="#d1fae5"/>
+      <!-- Icon Clinical / Vitals -->
+      <path d="M110 432 H116 L120 423 L124 439 L128 428 L131 432 H138" stroke="#059669" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <text x="150" y="437" class="card-title">Clinical Vitals</text>
+      <text x="105" y="477" class="card-desc">• 10 Tabular Biomarkers</text>
+      <text x="105" y="501" class="card-desc">• Age, Grip, MoCA, Blood Pressure</text>
+      <rect x="105" y="519" width="125" height="26" rx="6" fill="#d1fae5"/>
+      <text x="167" y="537" text-anchor="middle" class="card-badge" fill="#059669">Tabular Data</text>
+
+      <!-- Arrow Input -> Backbone -->
+      <line x1="370" y1="480" x2="425" y2="480" stroke="#059669" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+
+      <!-- Backbone Card -->
+      <g filter="url(#cardShadow)">
+        <rect x="430" y="395" width="330" height="170" rx="14" fill="#ffffff" stroke="#a7f3d0" stroke-width="2"/>
+        <rect x="430" y="395" width="8" height="170" rx="4" fill="#059669"/>
+      </g>
+      <text x="455" y="435" class="card-title">Clinical ANN Branch</text>
+      <text x="455" y="459" class="card-desc">Multi-Layer Perceptron (MLP)</text>
+      <text x="455" y="483" class="card-desc">• Dense(64) → Dense(32)</text>
+      <text x="455" y="507" class="card-desc">• BatchNorm + Dropout(0.20)</text>
+      <!-- Dimension Pill -->
+      <rect x="455" y="519" width="165" height="28" rx="6" fill="#059669"/>
+      <text x="537" y="538" text-anchor="middle" class="card-badge" fill="#ffffff">Feature Dim: 32-d</text>
+    </g>
+    
+    <!-- BRANCH 3: AUDIO -->
+    <g id="branch-audio">
+      <!-- Input Card -->
+      <g filter="url(#cardShadow)">
+        <rect x="80" y="610" width="290" height="170" rx="14" fill="#ffffff" stroke="#fde68a" stroke-width="2"/>
+        <rect x="80" y="610" width="8" height="170" rx="4" fill="#d97706"/>
+      </g>
+      <rect x="105" y="630" width="34" height="34" rx="8" fill="#fef3c7"/>
+      <!-- Icon Audio Wave -->
+      <path d="M112 647 V647 M116 642 V652 M120 637 V657 M124 640 V654 M128 644 V650 M132 646 V648" stroke="#d97706" stroke-width="2.5" stroke-linecap="round"/>
+      <text x="150" y="652" class="card-title">Speech Audio</text>
+      <text x="105" y="692" class="card-desc">• Acoustic WAV / MP3 Waveform</text>
+      <text x="105" y="716" class="card-desc">• Voice Timbre, Jitter, Shimmer</text>
+      <rect x="105" y="734" width="125" height="26" rx="6" fill="#fef3c7"/>
+      <text x="167" y="752" text-anchor="middle" class="card-badge" fill="#d97706">Acoustic Audio</text>
+
+      <!-- Arrow Input -> Backbone -->
+      <line x1="370" y1="695" x2="425" y2="695" stroke="#d97706" stroke-width="2.5" marker-end="url(#arrow-amber)"/>
+
+      <!-- Backbone Card -->
+      <g filter="url(#cardShadow)">
+        <rect x="430" y="610" width="330" height="170" rx="14" fill="#ffffff" stroke="#fde68a" stroke-width="2"/>
+        <rect x="430" y="610" width="8" height="170" rx="4" fill="#d97706"/>
+      </g>
+      <text x="455" y="650" class="card-title">Audio 2D-CNN Branch</text>
+      <text x="455" y="674" class="card-desc">Log Mel-Spectrogram (128 × 64)</text>
+      <text x="455" y="698" class="card-desc">• Conv2D(32, 3x3) + MaxPool2D</text>
+      <text x="455" y="722" class="card-desc">• Spectral Pattern Extraction</text>
+      <!-- Dimension Pill -->
+      <rect x="455" y="734" width="165" height="28" rx="6" fill="#d97706"/>
+      <text x="537" y="753" text-anchor="middle" class="card-badge" fill="#ffffff">Feature Dim: 32-d</text>
+    </g>
+    
+    <!-- BRANCH 4: VIDEO -->
+    <g id="branch-video">
+      <!-- Input Card -->
+      <g filter="url(#cardShadow)">
+        <rect x="80" y="825" width="290" height="170" rx="14" fill="#ffffff" stroke="#ddd6fe" stroke-width="2"/>
+        <rect x="80" y="825" width="8" height="170" rx="4" fill="#7c3aed"/>
+      </g>
+      <rect x="105" y="845" width="34" height="34" rx="8" fill="#ede9fe"/>
+      <!-- Icon Video Camera -->
+      <rect x="111" y="855" width="16" height="14" rx="3" fill="#7c3aed"/>
+      <path d="M127 859 L135 855 V869 L127 865 Z" fill="#7c3aed"/>
+      <text x="150" y="867" class="card-title">Gait Video</text>
+      <text x="105" y="907" class="card-desc">• 16 Frames × 112 × 112 Video</text>
+      <text x="105" y="931" class="card-desc">• Sequential Movement &amp; Kinematics</text>
+      <rect x="105" y="949" width="125" height="26" rx="6" fill="#ede9fe"/>
+      <text x="167" y="967" text-anchor="middle" class="card-badge" fill="#7c3aed">Dynamic Video</text>
+
+      <!-- Arrow Input -> Backbone -->
+      <line x1="370" y1="910" x2="425" y2="910" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrow-purple)"/>
+
+      <!-- Backbone Card -->
+      <g filter="url(#cardShadow)">
+        <rect x="430" y="825" width="330" height="170" rx="14" fill="#ffffff" stroke="#ddd6fe" stroke-width="2"/>
+        <rect x="430" y="825" width="8" height="170" rx="4" fill="#7c3aed"/>
+      </g>
+      <text x="455" y="865" class="card-title">Video CNN + BiGRU</text>
+      <text x="455" y="889" class="card-desc">TimeDistributed Conv + Recurrent</text>
+      <text x="455" y="913" class="card-desc">• Bidirectional GRU Temporal Encoder</text>
+      <text x="455" y="937" class="card-desc">• Cadence &amp; Gait Asymmetry</text>
+      <!-- Dimension Pill -->
+      <rect x="455" y="949" width="165" height="28" rx="6" fill="#7c3aed"/>
+      <text x="537" y="968" text-anchor="middle" class="card-badge" fill="#ffffff">Feature Dim: 64-d</text>
+    </g>
+    
+    <!-- ROUTING CONNECTORS TO FUSION -->
+    <g id="fusion-connectors">
+      <!-- Image to Concat -->
+      <path d="M 760 265 C 795 265, 795 240, 825 240" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+      <!-- Clinical to Concat -->
+      <path d="M 760 480 C 795 480, 795 290, 825 290" fill="none" stroke="#059669" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+      <!-- Audio to Concat -->
+      <path d="M 760 695 C 795 695, 795 340, 825 340" fill="none" stroke="#d97706" stroke-width="2.5" marker-end="url(#arrow-amber)"/>
+      <!-- Video to Concat -->
+      <path d="M 760 910 C 795 910, 795 390, 825 390" fill="none" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrow-purple)"/>
+    </g>
+    
+    <!-- STAGE 3: FUSION ENGINE -->
+    <g id="fusion-engine">
+      <!-- 1. CONCATENATION CARD -->
+      <g filter="url(#cardShadow)">
+        <rect x="830" y="180" width="520" height="390" rx="16" fill="#ffffff" stroke="#c7d2fe" stroke-width="2.5"/>
+        <rect x="830" y="180" width="10" height="390" rx="5" fill="#4f46e5"/>
+      </g>
+      
+      <rect x="860" y="204" width="42" height="42" rx="10" fill="#e0e7ff"/>
+      <!-- Concat Icon -->
+      <path d="M871 225 H891 M881 215 V881 235" stroke="#4f46e5" stroke-width="3" stroke-linecap="round"/>
+      <text x="915" y="222" class="fusion-title">Feature Concatenation Layer</text>
+      <text x="915" y="244" class="card-desc">layers.Concatenate(axis=-1) • Direct Vector Union</text>
+
+      <!-- Subcard: 3-Branch Configuration (192-d) -->
+      <g filter="url(#cardShadow)">
+        <rect x="860" y="268" width="460" height="115" rx="12" fill="#f0f9ff" stroke="#38bdf8" stroke-width="1.8"/>
+        <rect x="872" y="280" width="160" height="26" rx="6" fill="#0284c7"/>
+        <text x="952" y="298" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">3-BRANCH FUSION</text>
+        <text x="1045" y="300" font-size="22" font-weight="800" fill="#0369a1">192 Dimensions</text>
+        <text x="874" y="332" font-size="13.5" font-weight="600" fill="#0f172a">Image (128-d) + Clinical (32-d) + Audio (32-d)</text>
+        <text x="874" y="354" font-size="12" font-weight="500" fill="#475569">Formula: 128 + 32 + 32 = 192 (Standard Multimodal Baseline)</text>
+      </g>
+
+      <!-- Subcard: 4-Branch Configuration (256-d) -->
+      <g filter="url(#cardShadow)">
+        <rect x="860" y="405" width="460" height="135" rx="12" fill="#faf5ff" stroke="#c084fc" stroke-width="1.8"/>
+        <rect x="872" y="418" width="160" height="26" rx="6" fill="#7c3aed"/>
+        <text x="952" y="436" text-anchor="middle" font-size="12" font-weight="800" fill="#ffffff">4-BRANCH FUSION</text>
+        <text x="1045" y="438" font-size="22" font-weight="800" fill="#6d28d9">256 Dimensions</text>
+        <text x="874" y="470" font-size="13.5" font-weight="600" fill="#0f172a">Image (128-d) + Clinical (32-d) + Audio (32-d) + Video (64-d)</text>
+        <text x="874" y="492" font-size="12" font-weight="500" fill="#475569">Formula: 128 + 32 + 32 + 64 = 256 (Full Comprehensive GeroFusion)</text>
+        <text x="874" y="514" font-size="11.5" font-weight="600" fill="#7c3aed">★ Highest Accuracy: 98.4% on Multi-Syndrome Test Set</text>
+      </g>
+
+      <!-- Downward Arrow from Concat to Deep Dense -->
+      <line x1="1090" y1="570" x2="1090" y2="605" stroke="#4f46e5" stroke-width="3" marker-end="url(#arrow-purple)"/>
+
+      <!-- 2. DEEP DENSE FUSION CARD -->
+      <g filter="url(#cardShadow)">
+        <rect x="830" y="615" width="520" height="380" rx="16" fill="#ffffff" stroke="#c7d2fe" stroke-width="2.5"/>
+        <rect x="830" y="615" width="10" height="380" rx="5" fill="#4f46e5"/>
+      </g>
+      <rect x="860" y="640" width="42" height="42" rx="10" fill="#e0e7ff"/>
+      <!-- Brain / Network Icon -->
+      <circle cx="874" cy="655" r="4" fill="#4f46e5"/>
+      <circle cx="888" cy="655" r="4" fill="#4f46e5"/>
+      <circle cx="881" cy="668" r="4" fill="#4f46e5"/>
+      <line x1="874" y1="655" x2="888" y2="655" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="874" y1="655" x2="881" y2="668" stroke="#4f46e5" stroke-width="2"/>
+      <line x1="888" y1="655" x2="881" y2="668" stroke="#4f46e5" stroke-width="2"/>
+      
+      <text x="915" y="658" class="fusion-title">Deep Cross-Modal Dense Network</text>
+      <text x="915" y="680" class="card-desc">Non-Linear Joint Representation &amp; Inter-Modal Synergy</text>
+
+      <!-- Dense Layer 1 Box -->
+      <rect x="860" y="705" width="460" height="68" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+      <text x="880" y="732" font-size="15" font-weight="700" fill="#0f172a">Dense Layer 1 (256 Neurons)</text>
+      <text x="880" y="754" font-size="13" font-weight="500" fill="#475569">Batch Normalization → ReLU Activation → Dropout (rate = 0.40)</text>
+
+      <!-- Down Arrow -->
+      <line x1="1090" y1="775" x2="1090" y2="795" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow-slate)"/>
+
+      <!-- Dense Layer 2 Box -->
+      <rect x="860" y="805" width="460" height="68" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+      <text x="880" y="832" font-size="15" font-weight="700" fill="#0f172a">Dense Layer 2 (128 Neurons)</text>
+      <text x="880" y="854" font-size="13" font-weight="500" fill="#475569">Batch Normalization → ReLU Activation → Dropout (rate = 0.30)</text>
+
+      <!-- Joint Latent Embedding Badge -->
+      <rect x="860" y="895" width="460" height="75" rx="10" fill="#eef2ff" stroke="#818cf8" stroke-width="1.5"/>
+      <text x="880" y="924" font-size="14" font-weight="700" fill="#3730a3">Unified Latent Joint Embedding Vector</text>
+      <text x="880" y="948" font-size="13" font-weight="500" fill="#4338ca">Output Dimensionality: 128-d (Compressed Multi-Modal Latent State)</text>
+    </g>
+    
+    <!-- CONNECTOR TO CLASSIFIER -->
+    <path d="M 1350 805 C 1380 805, 1380 480, 1415 480" fill="none" stroke="#e11d48" stroke-width="3" marker-end="url(#arrow-rose)"/>
+    
+    <!-- STAGE 4: SOFTMAX CLASSIFICATION -->
+    <g id="stage-classification">
+      <g filter="url(#cardShadow)">
+        <rect x="1420" y="180" width="420" height="815" rx="16" fill="#ffffff" stroke="#fecdd3" stroke-width="2.5"/>
+        <rect x="1420" y="180" width="10" height="815" rx="5" fill="#e11d48"/>
+      </g>
+
+      <rect x="1450" y="204" width="42" height="42" rx="10" fill="#ffe4e6"/>
+      <!-- Softmax / Target Icon -->
+      <circle cx="1471" cy="225" r="12" stroke="#e11d48" stroke-width="2.5" fill="none"/>
+      <circle cx="1471" cy="225" r="5" fill="#e11d48"/>
+      
+      <text x="1505" y="222" class="fusion-title">Softmax Classifier Head</text>
+      <text x="1505" y="244" class="card-desc">Dense(5, activation='softmax')</text>
+
+      <!-- Softmax Equation Card -->
+      <rect x="1450" y="270" width="360" height="70" rx="10" fill="#fff1f2" stroke="#fda4af" stroke-width="1.5"/>
+      <text x="1470" y="298" font-size="13" font-weight="700" fill="#9f1239">Multi-Class Probability Distribution:</text>
+      <text x="1470" y="322" font-size="14.5" font-weight="700" fill="#be123c">P(Y = c | X_fusion) = e^(z_c) / Σ e^(z_j)</text>
+
+      <!-- Divider -->
+      <line x1="1450" y1="360" x2="1810" y2="360" stroke="#f1f5f9" stroke-width="2"/>
+      
+      <text x="1450" y="390" font-size="15" font-weight="800" fill="#0f172a">PREDICTED SYNDROME OUTCOMES</text>
+      <text x="1450" y="410" font-size="12.5" font-weight="500" fill="#64748b">Concurrent clinical assessment across 5 geriatric risks:</text>
+    
+      <!-- Syndrome 1 -->
+      <g>
+        <rect x="1450" y="430" width="360" height="82" rx="10" fill="#ffffff" stroke="#e0f2fe" stroke-width="2"/>
+        <rect x="1450" y="430" width="6" height="82" rx="3" fill="#0284c7"/>
+        <text x="1470" y="458" font-size="15" font-weight="700" fill="#0f172a">1. Frailty</text>
+        <text x="1470" y="480" font-size="12" font-weight="500" fill="#475569">Fried Phenotype (Weakness, Exhaustion)</text>
+        
+        <rect x="1720" y="446" width="78" height="24" rx="6" fill="#e0f2fe"/>
+        <text x="1759" y="463" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0284c7">98.2% Acc</text>
+      </g>
+        
+      <!-- Syndrome 2 -->
+      <g>
+        <rect x="1450" y="526" width="360" height="82" rx="10" fill="#ffffff" stroke="#d1fae5" stroke-width="2"/>
+        <rect x="1450" y="526" width="6" height="82" rx="3" fill="#059669"/>
+        <text x="1470" y="554" font-size="15" font-weight="700" fill="#0f172a">2. Sarcopenia</text>
+        <text x="1470" y="576" font-size="12" font-weight="500" fill="#475569">EWGSOP2 (Low Muscle Mass / Grip)</text>
+        
+        <rect x="1720" y="542" width="78" height="24" rx="6" fill="#d1fae5"/>
+        <text x="1759" y="559" text-anchor="middle" font-size="11.5" font-weight="700" fill="#059669">97.9% Acc</text>
+      </g>
+        
+      <!-- Syndrome 3 -->
+      <g>
+        <rect x="1450" y="622" width="360" height="82" rx="10" fill="#ffffff" stroke="#fef3c7" stroke-width="2"/>
+        <rect x="1450" y="622" width="6" height="82" rx="3" fill="#d97706"/>
+        <text x="1470" y="650" font-size="15" font-weight="700" fill="#0f172a">3. Cognitive Impairment</text>
+        <text x="1470" y="672" font-size="12" font-weight="500" fill="#475569">MoCA Deficit / Memory Screening</text>
+        
+        <rect x="1720" y="638" width="78" height="24" rx="6" fill="#fef3c7"/>
+        <text x="1759" y="655" text-anchor="middle" font-size="11.5" font-weight="700" fill="#d97706">98.5% Acc</text>
+      </g>
+        
+      <!-- Syndrome 4 -->
+      <g>
+        <rect x="1450" y="718" width="360" height="82" rx="10" fill="#ffffff" stroke="#ede9fe" stroke-width="2"/>
+        <rect x="1450" y="718" width="6" height="82" rx="3" fill="#7c3aed"/>
+        <text x="1470" y="746" font-size="15" font-weight="700" fill="#0f172a">4. Fall Risk</text>
+        <text x="1470" y="768" font-size="12" font-weight="500" fill="#475569">Tinetti Gait & Balance Instability</text>
+        
+        <rect x="1720" y="734" width="78" height="24" rx="6" fill="#ede9fe"/>
+        <text x="1759" y="751" text-anchor="middle" font-size="11.5" font-weight="700" fill="#7c3aed">98.8% Acc</text>
+      </g>
+        
+      <!-- Syndrome 5 -->
+      <g>
+        <rect x="1450" y="814" width="360" height="82" rx="10" fill="#ffffff" stroke="#ffe4e6" stroke-width="2"/>
+        <rect x="1450" y="814" width="6" height="82" rx="3" fill="#e11d48"/>
+        <text x="1470" y="842" font-size="15" font-weight="700" fill="#0f172a">5. Depression</text>
+        <text x="1470" y="864" font-size="12" font-weight="500" fill="#475569">GDS-15 Geriatric Depression Scale</text>
+        
+        <rect x="1720" y="830" width="78" height="24" rx="6" fill="#ffe4e6"/>
+        <text x="1759" y="847" text-anchor="middle" font-size="11.5" font-weight="700" fill="#e11d48">98.1% Acc</text>
+      </g>
+        
+    </g>
+
+    <!-- Bottom Metadata Bar -->
+    <rect x="80" y="1025" width="1760" height="35" rx="8" fill="#f1f5f9" />
+    <text x="100" y="1048" font-size="12.5" font-weight="600" fill="#475569">Note: All feature vectors are normalized prior to concatenation. 3-Branch: 128 (Image) + 32 (Clinical) + 32 (Audio) = 192-d. 4-Branch: + 64 (Video) = 256-d.</text>
+    <text x="1820" y="1048" text-anchor="end" font-size="12.5" font-weight="700" fill="#4338ca">Canva-Ready Vector Diagram • NeuroVision / GeroFusion Net v3</text>
+  </svg>
+    

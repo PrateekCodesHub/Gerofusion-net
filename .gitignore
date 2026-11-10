@@ -1,0 +1,86 @@
+# ==========================================
+# GeroFusion Net .gitignore
+# ==========================================
+
+# Virtual Environments
+venv/
+env/
+.env
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Python cache & build
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+
+# Node & Frontend dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+.npm
+
+# Large Datasets & Raw Media (Prevent GitHub 100MB limit)
+dataset/
+*.zip
+*.tar.gz
+*.tar
+*.7z
+*.mp4
+*.avi
+*.mov
+*.wav
+*.mp3
+
+# Keep placeholder in dataset/ directory
+!dataset/.gitkeep
+
+# Heavy Model Checkpoints (> 50MB)
+# Note: Lightweight models like GeriatricNet_Standard.keras (~9MB) can be tracked,
+# but ignore large checkpoints:
+trained_models/*.h5
+trained_models/*.pt
+trained_models/*.pth
+trained_models/*.ckpt
+!trained_models/*.json
+!trained_models/GeriatricNet_Standard.keras
+
+# IDE, Editor & OS artifacts
+.vscode/
+.idea/
+.claude/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary & Log files
+tmp/
+*.log

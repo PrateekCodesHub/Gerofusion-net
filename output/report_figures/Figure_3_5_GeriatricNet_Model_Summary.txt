@@ -1,0 +1,102 @@
+Model: "geriatricnet_branch"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ image_input (InputLayer)    [(None, 224, 224, 3)]     0         
+                                                                 
+ gn_conv1 (Conv2D)           (None, 224, 224, 32)      864       
+                                                                 
+ gn_bn1 (BatchNormalization  (None, 224, 224, 32)      128       
+ )                                                               
+                                                                 
+ activation (Activation)     (None, 224, 224, 32)      0         
+                                                                 
+ gn_conv1b (Conv2D)          (None, 224, 224, 32)      9216      
+                                                                 
+ batch_normalization (Batch  (None, 224, 224, 32)      128       
+ Normalization)                                                  
+                                                                 
+ activation_1 (Activation)   (None, 224, 224, 32)      0         
+                                                                 
+ gn_pool1 (MaxPooling2D)     (None, 112, 112, 32)      0         
+                                                                 
+ gn_conv2 (Conv2D)           (None, 112, 112, 64)      18432     
+                                                                 
+ batch_normalization_1 (Bat  (None, 112, 112, 64)      256       
+ chNormalization)                                                
+                                                                 
+ activation_2 (Activation)   (None, 112, 112, 64)      0         
+                                                                 
+ gn_conv2b (Conv2D)          (None, 112, 112, 64)      36864     
+                                                                 
+ batch_normalization_2 (Bat  (None, 112, 112, 64)      256       
+ chNormalization)                                                
+                                                                 
+ activation_3 (Activation)   (None, 112, 112, 64)      0         
+                                                                 
+ gn_pool2 (MaxPooling2D)     (None, 56, 56, 64)        0         
+                                                                 
+ dropout (Dropout)           (None, 56, 56, 64)        0         
+                                                                 
+ gn_conv3 (Conv2D)           (None, 56, 56, 128)       73728     
+                                                                 
+ batch_normalization_3 (Bat  (None, 56, 56, 128)       512       
+ chNormalization)                                                
+                                                                 
+ activation_4 (Activation)   (None, 56, 56, 128)       0         
+                                                                 
+ gn_conv3b (Conv2D)          (None, 56, 56, 128)       147456    
+                                                                 
+ batch_normalization_4 (Bat  (None, 56, 56, 128)       512       
+ chNormalization)                                                
+                                                                 
+ activation_5 (Activation)   (None, 56, 56, 128)       0         
+                                                                 
+ gn_pool3 (MaxPooling2D)     (None, 28, 28, 128)       0         
+                                                                 
+ dropout_1 (Dropout)         (None, 28, 28, 128)       0         
+                                                                 
+ gn_conv4 (Conv2D)           (None, 28, 28, 256)       294912    
+                                                                 
+ batch_normalization_5 (Bat  (None, 28, 28, 256)       1024      
+ chNormalization)                                                
+                                                                 
+ activation_6 (Activation)   (None, 28, 28, 256)       0         
+                                                                 
+ gn_pool4 (MaxPooling2D)     (None, 14, 14, 256)       0         
+                                                                 
+ gn_dw (DepthwiseConv2D)     (None, 14, 14, 256)       2560      
+                                                                 
+ batch_normalization_6 (Bat  (None, 14, 14, 256)       1024      
+ chNormalization)                                                
+                                                                 
+ activation_7 (Activation)   (None, 14, 14, 256)       0         
+                                                                 
+ gn_pw (Conv2D)              (None, 14, 14, 256)       65792     
+                                                                 
+ batch_normalization_7 (Bat  (None, 14, 14, 256)       1024      
+ chNormalization)                                                
+                                                                 
+ activation_8 (Activation)   (None, 14, 14, 256)       0         
+                                                                 
+ gn_pool5 (MaxPooling2D)     (None, 7, 7, 256)         0         
+                                                                 
+ gn_gap (GlobalAveragePooli  (None, 256)               0         
+ ng2D)                                                           
+                                                                 
+ gn_fc1 (Dense)              (None, 256)               65792     
+                                                                 
+ batch_normalization_8 (Bat  (None, 256)               1024      
+ chNormalization)                                                
+                                                                 
+ dropout_2 (Dropout)         (None, 256)               0         
+                                                                 
+ gn_fc2 (Dense)              (None, 128)               32896     
+                                                                 
+ dropout_3 (Dropout)         (None, 128)               0         
+                                                                 
+=================================================================
+Total params: 754400 (2.88 MB)
+Trainable params: 751456 (2.87 MB)
+Non-trainable params: 2944 (11.50 KB)
+_________________________________________________________________

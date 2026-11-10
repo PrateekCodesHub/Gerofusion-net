@@ -1,0 +1,38 @@
+Model: "audio_branch"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ audio_input (InputLayer)    [(None, 128, 64, 1)]      0         
+                                                                 
+ aud_c1 (Conv2D)             (None, 128, 64, 32)       320       
+                                                                 
+ batch_normalization_9 (Bat  (None, 128, 64, 32)       128       
+ chNormalization)                                                
+                                                                 
+ max_pooling2d (MaxPooling2  (None, 64, 32, 32)        0         
+ D)                                                              
+                                                                 
+ aud_c2 (Conv2D)             (None, 64, 32, 64)        18496     
+                                                                 
+ batch_normalization_10 (Ba  (None, 64, 32, 64)        256       
+ tchNormalization)                                               
+                                                                 
+ max_pooling2d_1 (MaxPoolin  (None, 32, 16, 64)        0         
+ g2D)                                                            
+                                                                 
+ aud_c3 (Conv2D)             (None, 32, 16, 128)       73856     
+                                                                 
+ aud_gap (GlobalAveragePool  (None, 128)               0         
+ ing2D)                                                          
+                                                                 
+ aud_fc1 (Dense)             (None, 64)                8256      
+                                                                 
+ dropout_4 (Dropout)         (None, 64)                0         
+                                                                 
+ aud_fc2 (Dense)             (None, 32)                2080      
+                                                                 
+=================================================================
+Total params: 103392 (403.88 KB)
+Trainable params: 103200 (403.12 KB)
+Non-trainable params: 192 (768.00 Byte)
+_________________________________________________________________

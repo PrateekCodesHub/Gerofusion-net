@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeroFusion v3 — Project Guide &amp; Presentation Prep</title>
+<style>
+  :root { --primary: #1a365d; --accent: #2b6cb0; --light: #ebf4ff; --border: #bee3f8; --text: #1a202c; --muted: #4a5568; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--text); line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; }
+  h1 { color: var(--primary); font-size: 2em; border-bottom: 3px solid var(--accent); padding-bottom: 10px; margin-bottom: 10px; }
+  h2 { color: var(--primary); font-size: 1.4em; margin-top: 30px; margin-bottom: 10px; border-left: 4px solid var(--accent); padding-left: 12px; }
+  h3 { color: var(--accent); font-size: 1.1em; margin-top: 15px; margin-bottom: 6px; }
+  p, li { margin-bottom: 6px; font-size: 0.95em; }
+  ul, ol { padding-left: 22px; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 16px; font-size: 0.9em; }
+  th { background: var(--primary); color: #fff; padding: 8px 10px; text-align: left; font-weight: 600; }
+  td { padding: 6px 10px; border-bottom: 1px solid #e2e8f0; }
+  tr:nth-child(even) { background: #f7fafc; }
+  code { background: #edf2f7; padding: 2px 5px; border-radius: 3px; font-size: 0.9em; font-family: Consolas, monospace; }
+  pre { background: #1a202c; color: #e2e8f0; padding: 14px; border-radius: 6px; overflow-x: auto; font-size: 0.85em; margin: 10px 0; }
+  .title-page { text-align: center; padding: 60px 0 40px; }
+  .title-page h1 { font-size: 2.6em; border: none; }
+  .title-page .subtitle { color: var(--accent); font-size: 1.2em; margin-top: 8px; }
+  .title-page .meta { color: var(--muted); margin-top: 20px; font-size: 0.95em; }
+  .toc { background: var(--light); border: 1px solid var(--border); border-radius: 8px; padding: 16px 24px; margin: 20px 0 30px; }
+  .toc a { color: var(--accent); text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 4px; font-size: 0.95em; }
+  .qa { background: #f7fafc; border-left: 3px solid var(--accent); padding: 10px 14px; margin: 10px 0; border-radius: 0 6px 6px 0; }
+  .qa strong { color: var(--primary); }
+  .qa p { margin: 4px 0; }
+  .highlight { background: var(--light); padding: 12px 16px; border-radius: 6px; margin: 10px 0; border: 1px solid var(--border); }
+  .arch-diagram { font-family: Consolas, monospace; font-size: 0.85em; white-space: pre; background: #f7fafc; padding: 14px; border-radius: 6px; border: 1px solid #e2e8f0; line-height: 1.4; }
+  @media print {
+    body { max-width: 100%; padding: 0; font-size: 11pt; }
+    .title-page { page-break-after: always; }
+    h2 { page-break-before: auto; page-break-after: avoid; }
+    table, pre, .qa { page-break-inside: avoid; }
+    .toc { page-break-after: always; }
+    a { color: var(--accent) !important; text-decoration: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ TITLE PAGE ═══════════════════ -->
+<div class="title-page">
+  <h1>GeroFusion v3</h1>
+  <div class="subtitle">Multi-Modal Deep Learning System for Geriatric Syndrome Detection</div>
+  <div class="subtitle" style="font-size:1em; margin-top:4px;">Hybrid CNN-ANN Fusion Architecture</div>
+  <div class="meta">
+    <p>Project Guide &amp; Presentation Prep</p>
+    <p>FastAPI + React/TypeScript + TensorFlow 2.15</p>
+    <p style="margin-top:20px;">Academic Research Prototype — Not for Clinical Use</p>
+  </div>
+</div>
+
+<!-- ═══════════════════ TABLE OF CONTENTS ═══════════════════ -->
+<div class="toc">
+  <h2 style="border:none; margin-top:0; padding-left:0;">Table of Contents</h2>
+  <ol>
+    <li><a href="#s1">Project Overview</a></li>
+    <li><a href="#s2">System Architecture</a></li>
+    <li><a href="#s3">Model Configurations (10 Total)</a></li>
+    <li><a href="#s4">CNN Backbones — Detailed</a></li>
+    <li><a href="#s5">ANN Variants — Detailed</a></li>
+    <li><a href="#s6">10 Clinical Input Features</a></li>
+    <li><a href="#s7">5 Output Classes (Syndromes)</a></li>
+    <li><a href="#s8">Additional Modalities (Audio &amp; Video)</a></li>
+    <li><a href="#s9">Training Details</a></li>
+    <li><a href="#s10">Kaggle Datasets Used</a></li>
+    <li><a href="#s11">Explainability — Grad-CAM</a></li>
+    <li><a href="#s12">API Endpoints</a></li>
+    <li><a href="#s13">Project File Map</a></li>
+    <li><a href="#s14">Likely Viva Questions &amp; Answers (20 Q&amp;A)</a></li>
+  </ol>
+</div>
+
+<!-- ═══════════════════ 1. PROJECT OVERVIEW ═══════════════════ -->
+<h2 id="s1">1. Project Overview</h2>
+<ul>
+  <li><strong>System:</strong> Multi-Modal Deep Learning System for Geriatric Syndrome Detection</li>
+  <li><strong>Architecture:</strong> Hybrid CNN-ANN fusion — combines image analysis with clinical tabular data</li>
+  <li><strong>5 Syndromes Detected:</strong> Frailty, Sarcopenia, Cognitive Impairment, Fall Risk, Depression</li>
+  <li><strong>4 Input Modalities:</strong>
+    <ul>
+      <li>Image — 224×224 RGB patient images (face, posture, MRI)</li>
+      <li>Clinical Data — 10 numeric features (age, BP, BMI, MoCA, grip, gait, etc.)</li>
+      <li>Audio — Mel-spectrogram of speech recordings</li>
+      <li>Video — Gait video frames for temporal analysis</li>
+    </ul>
+  </li>
+  <li><strong>Full-Stack:</strong> FastAPI backend (Python 3.10) + React/TypeScript frontend (Vite)</li>
+  <li><strong>10 Model Configurations:</strong> 5 CNN backbones × 5 ANN variants</li>
+  <li><strong>Best Accuracy:</strong> ResNet50 + Deep ANN → 96.1%</li>
+</ul>
+
+<!-- ═══════════════════ 2. SYSTEM ARCHITECTURE ═══════════════════ -->
+<h2 id="s2">2. System Architecture</h2>
+
+<div class="arch-diagram">
+User Browser (React + Vite, port 5173)
+        │
+        │  REST API (JSON / multipart)
+        ▼
+FastAPI Backend (Python 3.10, port 8000)
+        │
+        ├── POST /api/v1/predict        ← Image + Clinical tabular
+        ├── POST /api/v1/predict/audio   ← Speech WAV/MP3
+        ├── POST /api/v1/predict/video   ← Gait MP4/AVI
+        ├── GET  /api/v1/metrics         ← Model performance
+        └── GET  /api/v1/architecture    ← Layer descriptions
+                │
+                ▼
+    Hybrid CNN-ANN Model (TensorFlow 2.15)
+    ┌─────────────┐   ┌──────────────┐
+    │  CNN Branch  │   │  ANN Branch  │
+    │  224×224×3   │   │  10 clinical │
+    │  (ResNet50/  │   │  features    │
+    │  MobileNet/  │   │  (age, BP,   │
+    │  EfficientB0 │   │  BMI, MoCA,  │
+    │  EfficientB4 │   │  grip, gait) │
+    │  GeriatricN) │   │              │
+    └──────┬──────┘   └──────┬───────┘
+           │                 │
+         [128-d]           [32-d]
+              │           │
+              └─────┬─────┘
+                    │ Concatenate
+                    ▼
+             Dense(256) → BN → ReLU → Dropout(0.4)
+             Dense(128) → BN → ReLU → Dropout(0.3)
+                    │
+                    ▼
+             Softmax(5 classes)
+</div>
+
+<!-- ═══════════════════ 3. MODEL CONFIGURATIONS ═══════════════════ -->
+<h2 id="s3">3. Model Configurations (10 Total)</h2>
+<table>
+  <tr><th>#</th><th>CNN Backbone</th><th>ANN Variant</th><th>Accuracy</th><th>Model Size</th></tr>
+  <tr><td>1</td><td>GeriatricNet (Custom)</td><td>Standard</td><td>91.0%</td><td>8.6 MB</td></tr>
+  <tr><td>2</td><td>GeriatricNet</td><td>Deep</td><td>92.3%</td><td>8.8 MB</td></tr>
+  <tr><td>3</td><td>GeriatricNet</td><td>Attention</td><td>93.1%</td><td>9.3 MB</td></tr>
+  <tr><td>4</td><td>GeriatricNet</td><td>Wide</td><td>91.8%</td><td>9.1 MB</td></tr>
+  <tr><td>5</td><td>GeriatricNet</td><td>Residual</td><td>92.6%</td><td>9.4 MB</td></tr>
+  <tr><td>6</td><td>EfficientNetB0</td><td>Standard</td><td>94.6%</td><td>21.4 MB</td></tr>
+  <tr><td>7</td><td>EfficientNetB4</td><td>Standard</td><td>94.8%</td><td>74.6 MB</td></tr>
+  <tr><td>8</td><td>MobileNetV2</td><td>Standard</td><td>93.2%</td><td>14.1 MB</td></tr>
+  <tr><td>9</td><td>ResNet50</td><td>Standard</td><td>95.8%</td><td>98.2 MB</td></tr>
+  <tr style="background:#ebf4ff; font-weight:bold;"><td>10</td><td>ResNet50</td><td>Deep</td><td>96.1%</td><td>101.4 MB</td></tr>
+</table>
+
+<!-- ═══════════════════ 4. CNN BACKBONES ═══════════════════ -->
+<h2 id="s4">4. CNN Backbones — Detailed</h2>
+
+<table>
+  <tr><th>Backbone</th><th>Pretrained</th><th>Params</th><th>Output Dim</th><th>Key Feature</th></tr>
+  <tr><td>ResNet50</td><td>ImageNet (1.2M images)</td><td>25.6M</td><td>128-d</td><td>Skip connections prevent vanishing gradients. Top 20% fine-tuned.</td></tr>
+  <tr><td>MobileNetV2</td><td>ImageNet</td><td>3.4M</td><td>64-d</td><td>Depthwise separable conv, 8× fewer FLOPs. Ideal for real-time / edge.</td></tr>
+  <tr><td>EfficientNetB0</td><td>ImageNet</td><td>5.3M</td><td>64-d</td><td>Compound scaling (depth × width × resolution). Squeeze-excitation blocks.</td></tr>
+  <tr><td>EfficientNetB4</td><td>ImageNet</td><td>19.3M</td><td>128-d</td><td>Larger compound-scaled variant. Best accuracy/size tradeoff.</td></tr>
+  <tr><td>GeriatricNet (Custom)</td><td>None (from scratch)</td><td>~8.7M</td><td>128-d</td><td>4 conv blocks + depthwise separable block. Domain-specific.</td></tr>
+</table>
+
+<h3>GeriatricNet Architecture (Custom CNN)</h3>
+<table>
+  <tr><th>Block</th><th>Operation</th><th>Output Shape</th><th>Purpose</th></tr>
+  <tr><td>Input</td><td>—</td><td>224×224×3</td><td>RGB patient image</td></tr>
+  <tr><td>Block 1</td><td>Conv2D(32,3×3) → BN → ReLU → Conv2D(32) → MaxPool</td><td>112×112×32</td><td>Edge detection</td></tr>
+  <tr><td>Block 2</td><td>Conv2D(64,3×3) → BN → ReLU → Conv2D(64) → MaxPool</td><td>56×56×64</td><td>Texture extraction</td></tr>
+  <tr><td>Block 3</td><td>Conv2D(128,3×3) → BN → ReLU → Conv2D(128) → MaxPool</td><td>28×28×128</td><td>Semantic patterns (posture, facial droop)</td></tr>
+  <tr><td>Block 4</td><td>Conv2D(256,3×3) → BN → ReLU → MaxPool</td><td>14×14×256</td><td>Global context</td></tr>
+  <tr><td>DW-Sep</td><td>DepthwiseConv2D(3×3) → PointwiseConv2D(256) → MaxPool</td><td>7×7×256</td><td>Parameter-efficient feature refinement</td></tr>
+  <tr><td>Head</td><td>GlobalAvgPool → Dense(256) → Dense(128)</td><td>128</td><td>Visual feature vector → fusion</td></tr>
+</table>
+
+<!-- ═══════════════════ 5. ANN VARIANTS ═══════════════════ -->
+<h2 id="s5">5. ANN Variants — Detailed</h2>
+
+<table>
+  <tr><th>Variant</th><th>Architecture</th><th>Output Dim</th><th>Key Innovation</th></tr>
+  <tr><td>Standard</td><td>10 → Dense(64) → Dense(32)</td><td>32-d</td><td>Baseline 2-layer encoder. BN + Dropout(0.3, 0.2).</td></tr>
+  <tr><td>Deep</td><td>10 → 128 → 64 → 32 → 16</td><td>16-d</td><td>4 layers for higher-order feature interactions. Dropout 0.4→0.25.</td></tr>
+  <tr><td>Attention</td><td>10 → Dense(64) → Sigmoid Attention → Dense(32)</td><td>32-d</td><td>Dynamically weights clinical features per patient (soft attention).</td></tr>
+  <tr><td>Wide</td><td>10 → Dense(256) → Dense(128) + Skip → Dense(32)</td><td>32-d</td><td>Wide layers + residual skip from input projection.</td></tr>
+  <tr><td>Residual</td><td>10 → 64 → [Res Block 64] → [Res Block 32]</td><td>32-d</td><td>Skip connections in FC layers. Inspired by ResNet for tabular data.</td></tr>
+</table>
+
+<!-- ═══════════════════ 6. CLINICAL INPUT FEATURES ═══════════════════ -->
+<h2 id="s6">6. 10 Clinical Input Features</h2>
+
+<table>
+  <tr><th>#</th><th>Feature</th><th>Range</th><th>Unit</th><th>Clinical Significance</th></tr>
+  <tr><td>1</td><td>Age</td><td>60–100</td><td>years</td><td>Primary risk factor for all geriatric syndromes</td></tr>
+  <tr><td>2</td><td>Systolic BP</td><td>90–200</td><td>mmHg</td><td>Hypertension → cognitive decline, fall risk</td></tr>
+  <tr><td>3</td><td>Diastolic BP</td><td>50–120</td><td>mmHg</td><td>Low diastolic → orthostatic hypotension → falls</td></tr>
+  <tr><td>4</td><td>Heart Rate</td><td>45–130</td><td>bpm</td><td>Tachycardia → fall risk; bradycardia → frailty</td></tr>
+  <tr><td>5</td><td>BMI</td><td>14–45</td><td>kg/m²</td><td>Low BMI → sarcopenia, frailty; high → metabolic risk</td></tr>
+  <tr><td>6</td><td>Cognitive Score (MoCA)</td><td>0–30</td><td>/30</td><td>Montreal Cognitive Assessment. &lt;26 = mild impairment, &lt;18 = severe</td></tr>
+  <tr><td>7</td><td>Mobility Score</td><td>0–10</td><td>/10</td><td>Functional mobility. Low → fall risk, frailty</td></tr>
+  <tr><td>8</td><td>Grip Strength</td><td>3–55</td><td>kg</td><td>Handgrip dynamometry. Key sarcopenia/frailty marker</td></tr>
+  <tr><td>9</td><td>Gait Speed</td><td>0.1–1.8</td><td>m/s</td><td>&lt;0.8 m/s = mobility impairment. Strongest fall predictor</td></tr>
+  <tr><td>10</td><td>Depression Score (GDS-15)</td><td>0–15</td><td>/15</td><td>Geriatric Depression Scale. &gt;5 = suggestive, &gt;10 = likely depression</td></tr>
+</table>
+
+<!-- ═══════════════════ 7. OUTPUT CLASSES ═══════════════════ -->
+<h2 id="s7">7. 5 Output Classes (Syndromes)</h2>
+
+<table>
+  <tr><th>Class</th><th>Syndrome</th><th>Clinical Scale</th><th>Key Indicators</th></tr>
+  <tr><td>0</td><td>Frailty</td><td>Fried Frailty Index</td><td>Weight loss, exhaustion, low physical activity, slow gait, weak grip</td></tr>
+  <tr><td>1</td><td>Sarcopenia</td><td>EWGSOP2</td><td>Low muscle mass, low grip strength, low gait speed</td></tr>
+  <tr><td>2</td><td>Cognitive Impairment</td><td>MoCA</td><td>Memory loss, attention deficit, orientation, language fluency</td></tr>
+  <tr><td>3</td><td>Fall Risk</td><td>Morse Fall Scale</td><td>Gait instability, balance deficit, medication side-effects</td></tr>
+  <tr><td>4</td><td>Depression</td><td>GDS-15</td><td>Mood changes, social withdrawal, sleep disturbance, appetite loss</td></tr>
+</table>
+
+<!-- ═══════════════════ 8. ADDITIONAL MODALITIES ═══════════════════ -->
+<h2 id="s8">8. Additional Modalities (Audio &amp; Video)</h2>
+
+<h3>Audio Branch — Mel-Spectrogram CNN</h3>
+<table>
+  <tr><th>Property</th><th>Value</th></tr>
+  <tr><td>Input</td><td>(128, 64, 1) — 128 time frames × 64 mel bins × 1 channel</td></tr>
+  <tr><td>Architecture</td><td>Conv2D(32) → Conv2D(64) → Conv2D(128) → GAP → Dense(64) → Dense(32)</td></tr>
+  <tr><td>Output</td><td>32-dim audio feature vector</td></tr>
+  <tr><td>Speech Biomarkers</td><td>Pitch variation (monotone → cognitive decline), speech rate (slowed → frailty), voice tremor (Parkinson's), silence ratio (depression)</td></tr>
+</table>
+
+<h3>Video Branch — TimeDistributed CNN + BiGRU</h3>
+<table>
+  <tr><th>Property</th><th>Value</th></tr>
+  <tr><td>Input</td><td>(16, 112, 112, 3) — 16 frames × 112×112 RGB</td></tr>
+  <tr><td>Architecture</td><td>TimeDistributed(lightweight CNN per frame) → BiGRU(64) → Dense(64)</td></tr>
+  <tr><td>Output</td><td>64-dim temporal feature vector</td></tr>
+  <tr><td>Why not 3D CNN?</td><td>3D CNNs (C3D/I3D) need 8–16 GB VRAM. TimeDistributed + GRU is memory-efficient for GTX 1650 (4 GB).</td></tr>
+  <tr><td>Why BiGRU?</td><td>Bidirectional GRU reads gait both forward and backward — captures asymmetric gait patterns (stumble → recover).</td></tr>
+</table>
+
+<!-- ═══════════════════ 9. TRAINING DETAILS ═══════════════════ -->
+<h2 id="s9">9. Training Details</h2>
+
+<table>
+  <tr><th>Parameter</th><th>Value</th><th>Rationale</th></tr>
+  <tr><td>Hardware</td><td>NVIDIA GTX 1650 (4 GB VRAM)</td><td>Consumer GPU; mixed precision to fit within VRAM</td></tr>
+  <tr><td>Mixed Precision</td><td>FP16 (float16 compute, float32 gradients)</td><td>Halves memory, doubles throughput, no accuracy loss</td></tr>
+  <tr><td>Batch Size</td><td>16 (GPU) / 8 (CPU)</td><td>Largest batch that fits in 4 GB VRAM with FP16</td></tr>
+  <tr><td>Epochs</td><td>35 (GPU) / 15 (CPU)</td><td>With early stopping, patience = 8</td></tr>
+  <tr><td>Optimizer</td><td>Adam (LR = 1×10⁻⁴)</td><td>Adaptive per-parameter LR; handles multi-branch architecture</td></tr>
+  <tr><td>Loss Function</td><td>Categorical Cross-Entropy + Label Smoothing (0.1)</td><td>Prevents overconfident predictions, improves generalization</td></tr>
+  <tr><td>LR Schedule</td><td>Cosine annealing + 5-epoch linear warmup</td><td>Warm up → high LR (escape local minima) → low LR (fine-tune)</td></tr>
+  <tr><td>Data Augmentation</td><td>Random flip, brightness ±15%, contrast 85–115%, hue ±5%</td><td>Prevents overfitting to specific image characteristics</td></tr>
+  <tr><td>Train/Val Split</td><td>80% / 20%</td><td>Stratified random split (seed=42)</td></tr>
+  <tr><td>Regularization</td><td>Dropout (0.2–0.4), L2 weight decay (1×10⁻⁴), BatchNorm</td><td>Multiple complementary regularization strategies</td></tr>
+  <tr><td>Callbacks</td><td>EarlyStopping, ModelCheckpoint, ReduceLROnPlateau</td><td>Save best model, stop when no improvement</td></tr>
+</table>
+
+<!-- ═══════════════════ 10. KAGGLE DATASETS ═══════════════════ -->
+<h2 id="s10">10. Kaggle Datasets Used</h2>
+
+<table>
+  <tr><th>Dataset</th><th>Syndrome</th><th>Size</th><th>Samples</th><th>Usage</th></tr>
+  <tr><td>Fall Detection</td><td>Fall Risk</td><td>~500 MB</td><td>16,000+ images</td><td>CNN training — fall posture images</td></tr>
+  <tr><td>Alzheimer MRI 4-class</td><td>Cognitive Impairment</td><td>~1 GB</td><td>6,400 MRI scans</td><td>CNN training — 4 severity classes</td></tr>
+  <tr><td>FER2013 Facial Expressions</td><td>Depression / Frailty</td><td>~300 MB</td><td>35,000 images</td><td>CNN — sad/fear → Depression; neutral/disgust → Frailty</td></tr>
+  <tr><td>Body Fat Prediction</td><td>Sarcopenia</td><td>~1 MB</td><td>252 records</td><td>ANN training — body composition tabular</td></tr>
+  <tr><td>NHANES Elderly Health</td><td>Frailty</td><td>~50 MB</td><td>10,000+ records</td><td>ANN training — clinical measurements</td></tr>
+  <tr><td>Geriatric Depression Scale</td><td>Depression</td><td>~1 MB</td><td>Clinical text</td><td>ANN training — GDS-15 scores</td></tr>
+  <tr><td>Dementia Speech Audio</td><td>Cognitive (Audio)</td><td>~200 MB</td><td>Audio + transcripts</td><td>Audio branch — speech biomarkers</td></tr>
+  <tr><td>SisFall</td><td>Fall Risk / Frailty</td><td>~500 MB</td><td>4,510 fall events</td><td>Video branch — accelerometer + video</td></tr>
+</table>
+
+<!-- ═══════════════════ 11. GRAD-CAM ═══════════════════ -->
+<h2 id="s11">11. Explainability — Grad-CAM</h2>
+
+<div class="highlight">
+  <p><strong>Grad-CAM</strong> (Gradient-weighted Class Activation Mapping) — Selvaraju et al. (2017), ICCV</p>
+</div>
+
+<p><strong>How it works:</strong></p>
+<ol>
+  <li>Forward pass: input image → get prediction probabilities</li>
+  <li>Compute gradient of the predicted class score w.r.t. the <strong>last convolutional layer's feature maps</strong></li>
+  <li>Global Average Pool the gradients over spatial dimensions → importance weight per channel</li>
+  <li>Weighted sum of feature maps × importance weights → raw heatmap</li>
+  <li>Apply ReLU (only positive influence) and normalize to [0,1]</li>
+  <li>Resize heatmap to 224×224 and overlay on original image (JET colormap)</li>
+</ol>
+
+<p><strong>Why it matters clinically:</strong> Clinicians can verify the model attends to anatomically meaningful regions (facial muscles for frailty, brain regions for cognitive impairment) rather than background artifacts. This is essential for clinical trust and interpretability.</p>
+
+<p><strong>Last conv layers per backbone:</strong></p>
+<table>
+  <tr><th>Backbone</th><th>Last Conv Layer</th></tr>
+  <tr><td>ResNet50</td><td><code>conv5_block3_out</code></td></tr>
+  <tr><td>MobileNetV2</td><td><code>out_relu</code></td></tr>
+  <tr><td>EfficientNetB0/B4</td><td><code>top_activation</code></td></tr>
+  <tr><td>GeriatricNet</td><td><code>gn_pw</code> (pointwise conv)</td></tr>
+</table>
+
+<!-- ═══════════════════ 12. API ENDPOINTS ═══════════════════ -->
+<h2 id="s12">12. API Endpoints</h2>
+
+<table>
+  <tr><th>Method</th><th>Endpoint</th><th>Input</th><th>Output</th></tr>
+  <tr><td>POST</td><td><code>/api/v1/predict</code></td><td>Image (base64) + 10 clinical features + model_type + ann_type</td><td>5 syndrome risk scores, confidence, Grad-CAM heatmap</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/predict/audio</code></td><td>WAV/MP3 file + age + cognitive_score + depression_score</td><td>Cognitive risk, depression risk, speech biomarkers</td></tr>
+  <tr><td>POST</td><td><code>/api/v1/predict/video</code></td><td>MP4/AVI file + age</td><td>Fall risk score, frailty score, gait speed estimate</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/metrics</code></td><td>model_type (optional)</td><td>Accuracy, precision, recall, F1, AUC, confusion matrix</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/metrics/comparison</code></td><td>—</td><td>Side-by-side comparison of all 10 models</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/architecture/{model}</code></td><td>Model name</td><td>Layer-by-layer architecture description</td></tr>
+  <tr><td>GET</td><td><code>/api/v1/health</code></td><td>—</td><td>Server status, TF version, GPU info</td></tr>
+</table>
+
+<!-- ═══════════════════ 13. PROJECT FILE MAP ═══════════════════ -->
+<h2 id="s13">13. Project File Map</h2>
+
+<h3>Backend (Python)</h3>
+<table>
+  <tr><th>File</th><th>What's Inside</th><th>Key Lines</th></tr>
+  <tr><td><code>backend/app/models/hybrid_model.py</code></td><td><strong>ALL model architectures</strong> — CNN branches, ANN variants, fusion, compile</td><td>Standard ANN: 71–96, Deep: 99–128, Attention: 131–155, Wide: 158–184, Residual: 187–215, ResNet50: 232–262, MobileNet: 265–295, EfficientNet: 298–336, GeriatricNet: 339–429, Audio: 436–468, Video: 475–521, Fusion: 545–631</td></tr>
+  <tr><td><code>backend/train_all.py</code></td><td><strong>Training script</strong> — data loading, augmentation, training loop, evaluation</td><td>Hyperparams: 58–66, Data loading: 116–159, Cosine LR: 200–206, Training: 209–358</td></tr>
+  <tr><td><code>backend/download_datasets.py</code></td><td><strong>Kaggle dataset downloader</strong> — all 8 datasets</td><td>Datasets: 154–267</td></tr>
+  <tr><td><code>backend/process_raw_data.py</code></td><td>Moves raw Kaggle data into training folder structure</td><td>Image copying: 40–57</td></tr>
+  <tr><td><code>backend/app/routes/predict.py</code></td><td><strong>API endpoints</strong> — predict, audio, video, metrics</td><td>Predict: 258–328, Audio: 331–376, Video: 396–478, Clinical inference: 141–202</td></tr>
+  <tr><td><code>backend/app/models/grad_cam.py</code></td><td><strong>Grad-CAM explainability</strong> — heatmap computation + overlay</td><td>Compute: 68–149, Overlay: 152–184, To base64: 187–212</td></tr>
+  <tr><td><code>backend/main.py</code></td><td>FastAPI app entry point + CORS config</td><td>—</td></tr>
+</table>
+
+<h3>Frontend (React/TypeScript)</h3>
+<table>
+  <tr><th>File</th><th>What's Inside</th></tr>
+  <tr><td><code>frontend/src/App.tsx</code></td><td>Main app — page navigation</td></tr>
+  <tr><td><code>frontend/src/components/LandingHero.tsx</code></td><td>Landing page with system overview</td></tr>
+  <tr><td><code>frontend/src/components/AnalysisWorkflow.tsx</code></td><td>3-step workflow: select model → upload media → run analysis</td></tr>
+  <tr><td><code>frontend/src/components/InputForm.tsx</code></td><td>Clinical feature input form (10 parameters)</td></tr>
+  <tr><td><code>frontend/src/components/Dashboard.tsx</code></td><td>Results — risk scores, radar chart, Grad-CAM, recommendations</td></tr>
+  <tr><td><code>frontend/src/components/ModelComparison.tsx</code></td><td>Side-by-side model metrics comparison</td></tr>
+  <tr><td><code>frontend/src/components/ArchitectureExplorer.tsx</code></td><td>Interactive layer-by-layer architecture viewer</td></tr>
+  <tr><td><code>frontend/src/components/SystemArchitecture.tsx</code></td><td>System architecture diagram</td></tr>
+  <tr><td><code>frontend/src/services/apiService.ts</code></td><td>API client + mock fallback with heuristic scorer</td></tr>
+  <tr><td><code>frontend/src/types.ts</code></td><td>TypeScript interfaces for all data structures</td></tr>
+</table>
+
+<!-- ═══════════════════ 14. VIVA Q&A ═══════════════════ -->
+<h2 id="s14">14. Likely Viva Questions &amp; Answers</h2>
+
+<div class="qa">
+  <p><strong>Q1: "What is the architecture of your model?"</strong></p>
+  <p>A: Hybrid CNN-ANN fusion model. The CNN branch processes 224×224 patient images through a backbone (ResNet50 / MobileNetV2 / EfficientNet / GeriatricNet) and outputs a visual feature vector. The ANN branch processes 10 clinical features through dense layers and outputs a clinical feature vector. Both vectors are <strong>concatenated</strong> and passed through Dense(256) → Dense(128) → Softmax(5) for classification into 5 geriatric syndromes. Optionally, audio (Mel-spectrogram CNN) and video (TimeDistributed CNN + BiGRU) branches are fused too.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q2: "Why hybrid CNN-ANN? Why not just CNN or just ANN?"</strong></p>
+  <p>A: Medical diagnosis requires both <strong>visual patterns</strong> (facial affect, posture, MRI scans) AND <strong>clinical measurements</strong> (blood pressure, cognitive scores, grip strength). A CNN alone can't process tabular clinical data effectively. An ANN alone can't extract spatial features from images. The hybrid fusion combines both modalities for more accurate diagnosis — mimicking how a clinician uses both physical examination AND lab/test results together.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q3: "What is GeriatricNet?"</strong></p>
+  <p>A: A custom-designed CNN with 4 convolutional blocks + a depthwise separable block, specifically designed for geriatric patient images. Block 1 (32 filters) detects edges, Block 2 (64) extracts textures, Block 3 (128) captures semantic patterns like slouched posture, Block 4 (256) learns global context. Unlike ResNet50 which is pre-trained on general ImageNet images, GeriatricNet is <strong>trained from scratch</strong> on geriatric domain data — making it more interpretable via Grad-CAM.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q4: "What is transfer learning and where did you use it?"</strong></p>
+  <p>A: Transfer learning uses a model <strong>pre-trained on a large dataset</strong> (ImageNet, 1.2M images) and fine-tunes it on our smaller medical dataset. We used it in ResNet50, MobileNetV2, and EfficientNet — <strong>freezing the bottom 80% of layers</strong> (which learn general features like edges and textures) and fine-tuning the top 20% on our geriatric images. GeriatricNet does NOT use transfer learning — it's trained from scratch.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q5: "What is the attention mechanism in the Attention ANN?"</strong></p>
+  <p>A: Soft attention that <strong>dynamically weights clinical features</strong> per patient. It projects features to a 64-d space, computes sigmoid attention scores (0 to 1 per feature), then element-wise multiplies. This mimics how a clinician focuses on the most abnormal readings — if a patient has very low grip strength, the attention mechanism assigns higher weight to that feature automatically.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q6: "Why 5 syndromes? Why these specific ones?"</strong></p>
+  <p>A: These are the 5 most <strong>prevalent and inter-related geriatric syndromes</strong> identified in geriatric medicine literature. They often co-occur (e.g., frailty and sarcopenia, cognitive impairment and depression) and share risk factors, making multi-class classification clinically relevant. Each maps to an <strong>established clinical assessment scale</strong> (Fried Frailty Index, EWGSOP2, MoCA, Morse Fall Scale, GDS-15).</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q7: "What is Grad-CAM and why is it important?"</strong></p>
+  <p>A: Grad-CAM (Gradient-weighted Class Activation Mapping) produces a <strong>heatmap</strong> showing which regions of the input image most influenced the model's prediction. It computes gradients of the predicted class score with respect to the last convolutional layer's feature maps, then weights feature maps by gradient importance. This is <strong>critical for clinical trust</strong> — a clinician can verify the model is looking at relevant anatomy (e.g., facial muscles for frailty, brain regions for cognitive impairment), not background artifacts. Reference: Selvaraju et al. (2017), ICCV.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q8: "What activation functions did you use and why?"</strong></p>
+  <p>A: <strong>ReLU</strong> in hidden layers — computationally efficient, avoids vanishing gradient problem. <strong>Softmax</strong> in the output layer — produces a probability distribution over 5 classes (all probabilities sum to 1). <strong>Sigmoid</strong> in the attention mechanism — allows multiple features to be highlighted simultaneously (each feature independently scored 0–1), unlike softmax which creates competition between features.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q9: "What is batch normalization?"</strong></p>
+  <p>A: Normalizes each layer's inputs to <strong>zero mean and unit variance</strong> during training, using mini-batch statistics. Benefits: (1) faster convergence, (2) allows higher learning rates, (3) acts as mild regularization, (4) reduces sensitivity to weight initialization. We use it <strong>after every dense and conv layer</strong> in our architecture, before the activation function.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q10: "What is dropout and what values did you use?"</strong></p>
+  <p>A: Randomly sets a <strong>fraction of neurons to zero</strong> during training to prevent co-adaptation and overfitting. We used <strong>0.2–0.4</strong> across different layers: higher dropout (0.4) in layers with more parameters (fusion layers, early CNN head) where overfitting risk is higher, lower (0.2) in bottleneck layers that need to preserve information. At inference time, dropout is disabled.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q11: "Why mixed precision FP16?"</strong></p>
+  <p>A: Our GTX 1650 has only <strong>4 GB VRAM</strong>. Mixed precision uses float16 for forward/backward computation and float32 for critical operations (loss computation, gradient accumulation, master weights). This roughly <strong>halves memory usage</strong>, nearly <strong>doubles throughput</strong>, and lets us train with batch size 16 instead of 8 — all without measurable accuracy loss.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q12: "What is cosine annealing?"</strong></p>
+  <p>A: A learning rate schedule that follows a <strong>cosine curve</strong> from initial LR (1×10⁻⁴) to minimum LR (1×10⁻⁶). Combined with linear warmup (5 epochs), it: starts slow → ramps up → gradually decreases following cos(π×progress). High LR in early epochs helps escape local minima; low LR near completion helps fine-tune. Formula: LR = LR_min + 0.5 × (LR_max − LR_min) × (1 + cos(π × progress)).</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q13: "What is label smoothing?"</strong></p>
+  <p>A: Instead of hard one-hot labels like [0, 0, 1, 0, 0], we use <strong>soft labels</strong> like [0.02, 0.02, 0.92, 0.02, 0.02]. With smoothing factor ε=0.1, the target distribution becomes: y_smooth = (1−ε)×y_hard + ε/K, where K=5 classes. This prevents the model from becoming <strong>overconfident</strong> on training data and improves generalization to unseen patients.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q14: "What is the difference between ResNet50 and MobileNetV2?"</strong></p>
+  <p>A: <strong>ResNet50:</strong> 50 layers, 25.6M parameters, uses residual skip connections. Highest accuracy (95.8%) but largest model (98 MB), slowest inference. <strong>MobileNetV2:</strong> uses depthwise separable convolutions that reduce computation by ~8×, only 3.4M parameters (14 MB), 3× faster inference, slightly lower accuracy (93.2%). <strong>Trade-off:</strong> accuracy vs. speed/size. Use ResNet50 for best accuracy in a hospital setting; MobileNetV2 for deployment on mobile devices or resource-limited clinics.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q15: "How does the video branch work?"</strong></p>
+  <p>A: <strong>TimeDistributed</strong> applies the same lightweight CNN to each of 16 video frames independently (shared weights ensure temporal consistency). The per-frame features are fed into a <strong>Bidirectional GRU</strong> that captures temporal dynamics in both forward and backward directions — useful for detecting asymmetric gait patterns (stumble → recover). This is more <strong>memory-efficient</strong> than 3D CNNs (C3D/I3D) which would need 8–16 GB VRAM, while our GTX 1650 has only 4 GB.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q16: "What loss function did you use?"</strong></p>
+  <p>A: <strong>Categorical Cross-Entropy</strong> with label smoothing (ε=0.1). Cross-entropy measures the difference between the predicted probability distribution and the true label distribution: L = −Σ y_true × log(y_pred). Label smoothing softens the target distribution to prevent overconfidence. This is the standard loss function for multi-class classification problems.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q17: "What optimizer did you use?"</strong></p>
+  <p>A: <strong>Adam</strong> (Adaptive Moment Estimation) with initial learning rate 1×10⁻⁴. Adam combines: (1) <strong>momentum</strong> — exponential moving average of past gradients (avoids oscillation), and (2) <strong>RMSProp</strong> — adaptive per-parameter learning rates (handles different scales across CNN and ANN branches). This is well-suited for our hybrid architecture where parameters have very different magnitude ranges between the image and clinical branches.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q18: "What metrics did you use to evaluate?"</strong></p>
+  <p>A: <strong>Accuracy</strong> (overall correctness), <strong>Precision</strong> (of predicted positives, how many are truly positive), <strong>Recall/Sensitivity</strong> (of actual positives, how many are detected), <strong>F1-Score</strong> (harmonic mean of precision and recall), <strong>AUC-ROC</strong> (area under receiver operating characteristic curve), and <strong>Confusion Matrix</strong> (per-class breakdown). Per-class metrics are particularly important because syndromes have different clinical consequences — missing a Fall Risk case (false negative) is more dangerous than a false positive.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q19: "What is data augmentation and why did you use it?"</strong></p>
+  <p>A: Applying <strong>random transformations</strong> to training images: horizontal flip, brightness ±15%, contrast 85–115%, hue ±5%. This artificially increases dataset diversity, preventing overfitting to specific image characteristics (e.g., a particular camera, lighting, or background). The model becomes robust to variations in real clinical photos. Augmentation is applied <strong>only during training</strong>, not during validation or inference.</p>
+</div>
+
+<div class="qa">
+  <p><strong>Q20: "Can this be used in a real clinical setting?"</strong></p>
+  <p>A: This is an <strong>academic research prototype — not for clinical use</strong>. For clinical deployment, it would need: (1) FDA/regulatory approval (e.g., CE marking, FDA 510k), (2) prospective clinical validation on diverse patient populations, (3) integration with hospital EHR/EMR systems, (4) extensive bias and fairness testing across demographics (age, gender, ethnicity), (5) formal randomized clinical trials, (6) cybersecurity and privacy compliance (HIPAA/GDPR), (7) clinician training and change management.</p>
+</div>
+
+<div style="text-align:center; margin-top:40px; padding:20px; color: var(--muted); border-top: 2px solid var(--border);">
+  <p><strong>GeroFusion v3</strong> — Geriatric Syndrome Detection System</p>
+  <p>Hybrid CNN-ANN Multi-Modal Deep Learning Architecture</p>
+  <p style="font-size:0.85em; margin-top:10px;">To save as PDF: Open this file in a browser → Ctrl+P → "Save as PDF"</p>
+</div>
+
+</body>
+</html>
